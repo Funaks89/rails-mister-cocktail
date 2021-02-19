@@ -3,11 +3,13 @@
 </div>
 
   <div class="container">
+    <div>
     <%= simple_form_for [ @cocktail, @dose ] do |f| %>
       <%= f.input :description %>
       <%= f.association :ingredient %>
       <%= f.submit "Submit dose", class: "btn btn-primary" %>
     <% end %>
+    </div>
 
     <div>
     <% @cocktail.doses.each do |dose| %>
