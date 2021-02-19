@@ -1,5 +1,5 @@
-<div class="banner px-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F72488669%2F216286669309%2F1%2Foriginal.20190911-194443?w=1000&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C18%2C1868%2C934&s=71d6d1ad201336fa85c80f97677f4fda);">
-    <h1><%= @cocktail.name %></h1>
+<div class="banner px-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo.key, height: 300, width: 400, gravity: :face %>');">
+    <h1 class="card-desc-mid"><%= @cocktail.name %></h1>
 </div>
 
   <div class="container">
@@ -8,13 +8,28 @@
       <%= f.association :ingredient %>
       <%= f.submit "Submit dose", class: "btn btn-primary" %>
     <% end %>
-    <%= link_to  "To main page", cocktails_path %>
+
     <div>
     <% @cocktail.doses.each do |dose| %>
-      <p><%= dose.ingredient.name %></p>
-      <p><%= dose.description %></p>
+    <% if @cocktail.photo.attached? %>
+    <div>
+      <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+    <% end %>
+      <div class="card-product">
+        <div class="card-product-info">
+          <ul>
+            <li>
+              <h2><%= dose.ingredient.name %></h2>
+              <p><%= dose.description %></p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     <% end %>
     </div>
+    <%= link_to  "To main page", cocktails_path %>
   </div>
 
   

@@ -1,20 +1,48 @@
-  <div class="banner px-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.gq.com/photos/55f05234e4fe554f30884fbf/master/w_1600%2Cc_limit/catalina-wine-mixer.gif);">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://www.pinclipart.com/picdir/middle/556-5561755_transparent-apache-clipart-catalina-wine-mixer-svg-png.png" %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <div class="btn-right">
+        <%= link_to  "Add a Mixer", new_cocktail_path, class: "btn btn-primary" %>
+    </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+  
+  
+  
+  <div class="banner px-5" id="typewriter" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.gq.com/photos/55f05234e4fe554f30884fbf/master/w_1600%2Cc_limit/catalina-wine-mixer.gif);">
     <h1>Welcome to  <strong>THE CATALINA WINE MIXER</strong> to <strong>GET CRUNK!</strong>!</h1>
-    <%= link_to  "Add a Mixer", new_cocktail_path, class: "btn btn-primary" %>
+
   </div>
 <div class="container">
 
   <div class="cards">
     <% @cocktails.each do |cocktail| %>
-    <div class="card-product my-4">
-      <img src="https://i1.sndcdn.com/artworks-000251036365-t5q4il-t500x500.jpg" />
-      <div class="card-product-infos">
-        <h2><%= cocktail.name %></h2>
-        <%= link_to 'SHOW ME!', cocktail_path(cocktail) %>
-        <%= link_to  "DESTROY", cocktail_path(cocktail), method: :delete, data: { confirm: "are you sure?"} %>
+
+      
+      <div class="card-category py-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, gravity: :face %>')">
+        <h2 class="card-desc"><%= cocktail.name %></h2>
+        <div class="btn-left">
+        <%= link_to '', cocktail_path(cocktail), class:"far fa-eye" %>
+        </div>
+        <div class="btn-right">
+        <%= link_to '',cocktail_path(cocktail), method: :delete, data: { confirm: "are you sure?"}, class:"far fa-trash-alt" %>
+        </div>
       </div>
-      <%= cl_image_tag "awkl5c9syvo2ycr0g07r.jpg", :width=>1200, :crop=>"scale"filename %>
-    </div>
+    
+
     <% end %>
 
   </div>
