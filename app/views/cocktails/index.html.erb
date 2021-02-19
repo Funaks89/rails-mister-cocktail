@@ -13,6 +13,7 @@
         <%= link_to 'SHOW ME!', cocktail_path(cocktail) %>
         <%= link_to  "DESTROY", cocktail_path(cocktail), method: :delete, data: { confirm: "are you sure?"} %>
       </div>
+      <%= cl_image_tag "awkl5c9syvo2ycr0g07r.jpg", :width=>1200, :crop=>"scale"filename %>
     </div>
     <% end %>
 
