@@ -1,0 +1,20 @@
+  <div class="banner px-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.gq.com/photos/55f05234e4fe554f30884fbf/master/w_1600%2Cc_limit/catalina-wine-mixer.gif);">
+    <h1>Welcome to  <strong>THE CATALINA WINE MIXER</strong> to <strong>GET CRUNK!</strong>!</h1>
+    <%= link_to  "Add a Mixer", new_cocktail_path, class: "btn btn-primary" %>
+  </div>
+<div class="container">
+
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+    <div class="card-product my-4">
+      <img src="https://i1.sndcdn.com/artworks-000251036365-t5q4il-t500x500.jpg" />
+      <div class="card-product-infos">
+        <h2><%= cocktail.name %></h2>
+        <%= link_to 'SHOW ME!', cocktail_path(cocktail) %>
+        <%= link_to  "DESTROY", cocktail_path(cocktail), method: :delete, data: { confirm: "are you sure?"} %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>
